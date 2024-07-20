@@ -1,20 +1,39 @@
+const { transform } = require('next/dist/build/swc');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/pages/**/*.{js,jsx,ts,tsx,mdx}",
-    "./src/components/**/*.{js,jsx,ts,tsx,mdx}",
-    "./src/app/**/*.{js,jsx,ts,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      fontFamily:{
-        inter:['var(--font-inter']
+      fontFamily: {
+        inter: ['var(--font-inter']
       },
-      colors:{
-        background:'rgb(var(--background))',
-        foreground:'rgb(var(--foreground))',
-        muted:'rgb(var(--muted))',
-        accent:'rgb(var(--accent))'
+      colors: {
+        background: 'rgb(var(--background))',
+        foreground: 'rgb(var(--foreground))',
+        muted: 'rgb(var(--muted))',
+        accent: 'rgb(var(--accent))'
+      },
+      backgroundImage: {
+        'firefly-radial': "radial-gradient(50% 50% at 50% 50%, rgba(253, 255, 80, 0.5) 0%, rgba(217, 217, 217, 0) 100%)"
+      },
+
+      keyframes: {
+        'spin-reverse': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(-360deg)' },
+        }
+      },
+      animation: {
+        'spin-slow': 'spin 40s linear infinite',
+        'spin-slow-reverse': 'spin-reverse 40s linear infinite',
       }
     },
   },
